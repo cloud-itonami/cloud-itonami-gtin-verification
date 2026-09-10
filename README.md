@@ -36,7 +36,7 @@ The one externally-verifiable rule this governor enforces is the REAL
 **GS1 GTIN Modulo-10 check-digit algorithm** (GS1 General Specifications
 section 7.9 -- the same algorithm underlying every UPC-A / EAN-13(JAN) /
 EAN-8 / ITF-14 barcode in circulation). `gtinverify.governor/check-digit`
-is verified in `test/gtinverify/governor_test.clj` against two
+is verified in `test/gtinverify/governor_test.kotoba` against two
 independently-known reference GTINs: UPC-A `036000291452` (Wrigley's gum,
 check digit `2`) and EAN-13 `4006381333931` (GS1's own commonly cited
 worked example, check digit `1`).
@@ -94,10 +94,10 @@ clojure -M:test    # governor contract (incl. the two real-GTIN check-digit
 
 | File | Role |
 |---|---|
-| `src/gtinverify/store.cljc` | **Store** protocol -- `MemStore`; per-GTIN first-verified-seller registry, append-only audit ledger. |
-| `src/gtinverify/advisor.cljc` | **Verification Advisor** -- `mock-advisor` \\| `llm-advisor`; proposes a clear/flag verdict. |
-| `src/gtinverify/governor.cljc` | **GTIN Verification Governor** -- the real GS1 check-digit algorithm + format/known-duplicate HARD checks + advisor-flag/confidence escalation. |
-| `src/gtinverify/actor.cljc` | **GTINVerificationActor** -- langgraph-clj StateGraph. |
+| `src/gtinverify/store.kotoba` | **Store** protocol -- `MemStore`; per-GTIN first-verified-seller registry, append-only audit ledger. |
+| `src/gtinverify/advisor.kotoba` | **Verification Advisor** -- `mock-advisor` \\| `llm-advisor`; proposes a clear/flag verdict. |
+| `src/gtinverify/governor.kotoba` | **GTIN Verification Governor** -- the real GS1 check-digit algorithm + format/known-duplicate HARD checks + advisor-flag/confidence escalation. |
+| `src/gtinverify/actor.kotoba` | **GTINVerificationActor** -- langgraph-clj StateGraph. |
 | `test/gtinverify/*_test.clj` | governor contract (incl. real-GTIN check-digit fixtures) + actor lifecycle. |
 
 ## Required capabilities
