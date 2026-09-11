@@ -30,7 +30,7 @@ Governor as a langgraph-clj StateGraph (`intake -> advise -> govern ->
 decide -> commit/hold`, human-approval interrupt), modeled on
 cloud-itonami-isco-1324's supply-distribution actor and sharing
 cloud-itonami-gtin-issuance's check-digit implementation pattern. 15
-tests / 29 assertions green (`clojure -M:test`).
+tests / 29 assertions green (`kbb -M:test`).
 
 The one externally-verifiable rule this governor enforces is the REAL
 **GS1 GTIN Modulo-10 check-digit algorithm** (GS1 General Specifications
@@ -86,7 +86,7 @@ themselves.
 ## Run
 
 ```bash
-clojure -M:test    # governor contract (incl. the two real-GTIN check-digit
+kbb -M:test    # governor contract (incl. the two real-GTIN check-digit
                     # fixtures) + actor lifecycle, 15 tests / 29 assertions
 ```
 
